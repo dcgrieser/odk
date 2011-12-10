@@ -52,7 +52,12 @@ module Odk
     config.assets.version = '1.0'
     config.generators do |g|
       # g.template_engine :haml
-      g.test_framework :rspec, :view_specs => false, :controller_specs => false
+      g.test_framework :rspec,
+        :view_specs       => false,
+        :controller_specs => false,
+        :helper_specs     => false,
+        :routing_specs    => false,
+        :request_specs    => false
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
   end
