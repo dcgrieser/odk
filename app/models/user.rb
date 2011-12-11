@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   FACULTY = 'Faculty'
   TYPES = [STUDENT, FACULTY]
 
-  attr_accessible :first_name, :last_name, :email, :title, :initiation_date, :type, :active
+  attr_accessible :first_name, :last_name, :email, :password, :title, :initiation_date, :type, :active
 
   has_secure_password
 
@@ -37,5 +37,11 @@ class User < ActiveRecord::Base
 
   def faculty?
     type == FACULTY
+  end
+
+  def admin?
+    role = roles.order(:term_start_year).first
+    return unless role
+    return role.term_start_year.to_i >= Date.today.year - 1
   end
 end

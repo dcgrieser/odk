@@ -37,7 +37,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  # config.authentication_method = :authenticate
+  config.authentication_method = :authenticate_admin
 
 
   # == Current User
@@ -48,8 +48,8 @@ ActiveAdmin.setup do |config|
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
   # config.current_user_method = :current_user
-  config.authentication_method = false
-  config.current_user_method   = false
+  # config.authentication_method = false
+  # config.current_user_method   = false
 
 
   # == Logging Out
@@ -62,13 +62,13 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  # config.logout_link_path = :destroy_admin_user_session_path
+  config.logout_link_path = :admin_session_ath
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
-  # config.logout_link_method = :get
+  config.logout_link_method = :delete
 
 
   # == Admin Comments
@@ -102,4 +102,17 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+end
+
+module ActiveAdmin
+  module Views
+    class HeaderRenderer
+      def utility_navigation
+        content_tag 'p', :id => "utility_nav", :class => 'header-item' do
+          html = content_tag(:span, current_user.name, :class => "current_user")
+          html << link_to(I18n.t('active_admin.logout'), admin_sessions_path, :method => :delete)
+        end
+      end
+    end
+  end
 end

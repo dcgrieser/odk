@@ -16,6 +16,7 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :email
       f.input :title
+      f.input :password
       f.input :initiation_date
       f.input :type, :as => :select, :collection => User::TYPES
       f.input :active
