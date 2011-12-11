@@ -10,7 +10,7 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs "Details" do
+    f.inputs do
       f.input :last_name
       f.input :first_name
       f.input :email
