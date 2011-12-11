@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  TYPES = ['Student', 'Faculty']
+  STUDENT = 'Student'
+  FACULTY = 'Faculty'
+  TYPES = [STUDENT, FACULTY]
 
   attr_accessible :first_name, :last_name, :email, :title, :initiation_date, :type, :active
 
@@ -11,6 +13,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true
   validates :email, :presence => true, :uniqueness => true
   validates :type, :inclusion => { :in => TYPES}, :allow_nil => true
+  validates :title, :presence => true, :if => :faculty?
 
   def self.tappees
     where(:initiation_date => nil).order(:last_name)
@@ -26,5 +29,13 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def student?
+    type == STUDENT
+  end
+
+  def faculty?
+    type == FACULTY
   end
 end

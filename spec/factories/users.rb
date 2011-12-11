@@ -8,5 +8,12 @@ FactoryGirl.define do
     active false
   end
 
+  factory :student, :class => Student, :parent => :user do
+  end
+
+  factory :faculty, :class => Faculty, :parent => :user do
+    title "faculty"
+  end
+
   sequence(:email) {|i| "foo_#{i}@bar.com"}
 end
