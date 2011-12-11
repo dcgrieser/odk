@@ -1,4 +1,5 @@
 Odk::Application.routes.draw do
+  ActiveAdmin.routes(self)
   resource :history, :only => :show
   resource :contact, :only => :show
 
