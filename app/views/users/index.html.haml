@@ -1,0 +1,26 @@
+%h2 Members
+- if @tappees.present?
+  %h3= "#{current_semester} #{Date.today.year} Tappees"
+  - @tappees.each do |u|
+    .user
+      = u.name
+
+%h2 Current Student Members
+- @current_students.each do |u|
+  .user
+    = u.name
+
+%h2 Current Faculty Members
+- @current_faculty.each do |u|
+  .user
+    = u.name
+
+%h2 Student Members
+- @students.each do |u|
+  .user
+    = u.name
+
+%h2 Faculty Members
+- @faculty.each do |u|
+  .user
+    = u.name
