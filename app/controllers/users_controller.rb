@@ -8,5 +8,6 @@ class UsersController < ApplicationController
   end
 
   def officers
+    @officers = User.current_officers
   end
 end

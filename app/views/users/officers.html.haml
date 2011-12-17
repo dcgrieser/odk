@@ -1,2 +1,3 @@
-%h1 Users#officers
-%p Find me in app/views/users/officers.html.haml
+%h2 Officers
+- @officers.each do |u|
+  = "#{u.name} #{u.current_role.title}"

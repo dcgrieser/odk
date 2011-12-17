@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
+  attr_accessible :first_name, :last_name, :email, :password, :title, :initiation_date, :type, :active
+  has_secure_password
+
   STUDENT = 'Student'
   FACULTY = 'Faculty'
   TYPES = [STUDENT, FACULTY]
-
-  attr_accessible :first_name, :last_name, :email, :password, :title, :initiation_date, :type, :active
-
-  has_secure_password
 
   has_many :roles, :dependent => :destroy
 
@@ -24,11 +23,19 @@ class User < ActiveRecord::Base
   end
 
   def self.initiated
-    where("initiation_date IS NOT NULL").order(:initiation_date => :desc)
+    where("initiation_date IS NOT NULL").order(:initiation_date => :desc, :last_name => :desc)
+  end
+
+  def self.current_officers
+    joins(:roles).merge(Role.current)
   end
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def newest_role
+    roles.order(:term_start_year => :desc).limit(1).first
   end
 
   def student?
