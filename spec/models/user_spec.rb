@@ -19,7 +19,7 @@ describe User do
   describe "#admin?" do
     let (:student) { Factory.create(:student) }
     it "returns true if the user is a current officer" do
-      role = Factory.create(:role, :user_id => student.id, :term_start_year => Date.today.year)
+      role = Factory.create(:role, :user_id => student.id, :term_start_year => Date.today.year.to_s)
       student.admin?.should be_true
     end
 
@@ -27,7 +27,7 @@ describe User do
       student.admin?.should be_false
     end
     it "returns false if the user is a past officer" do
-      role = Factory.create(:role, :user_id => student.id, :term_start_year => Date.today.year - 2)
+      role = Factory.create(:role, :user_id => student.id, :term_start_year => (Date.today.year - 2).to_s)
       student.admin?.should be_false
     end
   end
@@ -95,11 +95,11 @@ describe User do
         @current_officers = []
         Role::TITLES.each do |title|
           u = Factory.create(:student)
-          Factory.create(:role, :term_start_year => 2010, :title => title, :user_id => u.id)
+          Factory.create(:role, :term_start_year => "2010", :title => title, :user_id => u.id)
           @current_officers << u
         end
         @past_officer = Factory.create(:student)
-        Factory.create(:role, :term_start_year => 2009, :user_id => @past_officer.id)
+        Factory.create(:role, :term_start_year => "2009", :user_id => @past_officer.id)
       end
 
       it "returns the current officers" do
@@ -115,8 +115,8 @@ describe User do
   describe "#newest_role" do
     it "returns the latest role" do
       officer = Factory.create(:student)
-      role_2 = Factory.create(:role, :user_id => officer.id, :term_start_year => 2011)
-      role_1 = Factory.create(:role, :user_id => officer.id, :term_start_year => 2009)
+      role_2 = Factory.create(:role, :user_id => officer.id, :term_start_year => "2011")
+      role_1 = Factory.create(:role, :user_id => officer.id, :term_start_year => "2009")
       officer.newest_role.should == role_2
     end
 

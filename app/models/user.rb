@@ -15,15 +15,15 @@ class User < ActiveRecord::Base
   validates :title, :presence => true, :if => :faculty?
 
   def self.tappees
-    where(:initiation_date => nil).order(:last_name)
+    where(:initiation_date => nil).order("last_name asc")
   end
 
   def self.current
-    where(:active => true).order(:last_name)
+    where(:active => true).order("last_name asc")
   end
 
   def self.initiated
-    where("initiation_date IS NOT NULL").order(:initiation_date => :desc, :last_name => :desc)
+    where("initiation_date IS NOT NULL").order("initiation_date desc, last_name asc")
   end
 
   def self.current_officers
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def newest_role
-    roles.order(:term_start_year => :desc).limit(1).first
+    roles.order("term_start_year desc").limit(1).first
   end
 
   def student?
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    role = roles.order(:term_start_year).first
+    role = roles.order("term_start_year desc").first
     return unless role
     return role.term_start_year.to_i >= Date.today.year - 1
   end

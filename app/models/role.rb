@@ -13,7 +13,7 @@ class Role < ActiveRecord::Base
     :format => { :with => /\d{4}/ }
 
   def self.current
-    current_year = order(:term_start_year => :desc).limit(1).first.try(:term_start_year)
+    current_year = order("term_start_year desc").limit(1).first.try(:term_start_year)
     where(:term_start_year => current_year)
   end
 end

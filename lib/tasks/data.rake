@@ -1,4 +1,4 @@
-namespace :sample_data do
+namespace :data do
   desc "populate"
   task :populate => :environment do
     students = [
@@ -29,30 +29,30 @@ namespace :sample_data do
       # Current
       {
         :user => {:first_name => 'Max', :last_name => 'Natali', :email => 'mnatali@miami.edu', :active => true, :initiation_date => Date.new(2010, 8) },
-        :role => {:title => 'President', :term_start_year => 2011},
+        :role => {:title => 'President', :term_start_year => "2011"},
       },
 
       {
         :user => {:first_name => 'Jessie', :last_name => 'Garg', :email => 'jgarg@miami.edu', :active => true, :initiation_date => Date.new(2010, 8) },
-        :role => {:title => 'Historian', :term_start_year => 2011},
+        :role => {:title => 'Historian', :term_start_year => "2011"},
       },
 
       # Previous
 
       {
         :user => {:first_name => 'Kurt', :last_name => 'Jeffreys', :email => 'kjeffreys@miami.edu', :active => true, :initiation_date => Date.new(2009, 8) },
-        :role => {:title => 'President', :term_start_year => 2010},
+        :role => {:title => 'President', :term_start_year => "2010"},
       },
 
       {
         :user => {:first_name => 'Neil', :last_name => 'Scheffel', :email => 'nsheffel@miami.edu', :active => true, :initiation_date => Date.new(2008, 8) },
-        :role => {:title => 'Historian', :term_start_year => 2009},
+        :role => {:title => 'Historian', :term_start_year => "2009"},
       },
 
       # Past
       {
         :user => {:first_name => 'Hillary', :last_name => 'Beaudet', :email => 'hbeaudet@miami.edu', :active => false, :initiation_date => Date.new(2000, 8) },
-        :role => {:title => 'Historian', :term_start_year => 2001},
+        :role => {:title => 'Historian', :term_start_year => "2001"},
       },
     ]
 
