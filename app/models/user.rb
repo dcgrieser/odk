@@ -1,5 +1,16 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :password, :title, :initiation_date, :type, :active
+  attr_accessible :first_name,
+    :last_name,
+    :email,
+    :password,
+    :title,
+    :initiation_date,
+    :type,
+    :active,
+    :remove_image,
+    :image
+
+  image_accessor :image
   has_secure_password
 
   STUDENT = 'Student'

@@ -4,6 +4,8 @@ gem 'rails', '3.1.3'
 gem 'jquery-rails'
 gem 'haml'
 gem 'activeadmin'
+gem 'dragonfly'
+gem 'rack-cache', :require => 'rack/cache'
 
 group :development, :test do
   gem 'sqlite3'
