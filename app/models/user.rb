@@ -10,12 +10,12 @@ class User < ActiveRecord::Base
     :remove_image,
     :image
 
-  image_accessor :image
-  has_secure_password
-
   STUDENT = 'Student'
   FACULTY = 'Faculty'
   TYPES = [STUDENT, FACULTY]
+
+  image_accessor :image
+  has_secure_password
 
   has_many :roles, :dependent => :destroy
 
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   validates :type, :inclusion => { :in => TYPES}, :allow_nil => true
   validates :title, :presence => true, :if => :faculty?
+  validates_property :format, :of => :image, :in => [:jpeg, :jpg, :png]
 
   def self.tappees
     where(:initiation_date => nil).order("last_name asc")

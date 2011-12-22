@@ -7,6 +7,7 @@ gem "haml"
 gem "activeadmin"
 gem "dragonfly"
 gem "rack-cache", :require => "rack/cache"
+gem "rest-client"
 
 group :development, :test do
   gem "haml-rails"

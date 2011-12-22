@@ -1,0 +1,18 @@
+%h3 Upcoming Events!
+- @calendar_events.each do |event|
+  .gcal_event
+    %p
+      = link_to event.title, event.link
+      %br
+      = event.when.start
+      %br
+      = event.when.end
+
+%h3 Past Events!
+- @events.each do |event|
+  .event
+    %p= event.title
+    %p= event.body
+    - event.event_images.each do |image|
+      .image
+        = image_tag image.image.url
