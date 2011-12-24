@@ -12,7 +12,7 @@
 - @events.each do |event|
   .event
     %p= event.title
-    %p= event.body
+    %p= event.description
     - event.event_images.each do |image|
       .image
         = image_tag image.image.url
