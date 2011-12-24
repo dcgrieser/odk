@@ -1,4 +1,16 @@
 ActiveAdmin.register Role do
+  scope :all
+  scope :current do
+    Role.current
+  end
+
+  index do
+    column :title
+    column :term_start_year
+    column :user
+    default_actions
+  end
+
   form do |f|
     f.inputs do
       f.input :user
