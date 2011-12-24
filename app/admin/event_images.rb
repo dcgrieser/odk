@@ -3,7 +3,7 @@ ActiveAdmin.register EventImage do
 
   index :as => :grid do |event_image|
     a :href => admin_event_image_path(event_image) do
-      image_tag(event_image.image.url)
+      image_tag(event_image.thumbnail.url, :title => event_image.description)
     end
   end
 
@@ -14,9 +14,7 @@ ActiveAdmin.register EventImage do
   form do |f|
     f.inputs do
       f.input :event
-      if f.object.image.present?
-        f.input :remove_image, :as => :boolean
-      end
+      f.input :description
       f.input :image, :as => :file
     end
     f.buttons

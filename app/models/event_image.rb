@@ -6,4 +6,8 @@ class EventImage < ActiveRecord::Base
   validates :event, :presence => true
   validates :image, :presence => true
   validates_property :format, :of => :image, :in => [:jpg, :jpeg, :png]
+
+  def thumbnail
+    image.thumb("200x200#")
+  end
 end
