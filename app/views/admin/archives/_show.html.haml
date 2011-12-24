@@ -1,0 +1,18 @@
+.attributes_table.archive
+  %table
+    %tbody
+      %tr
+        %th Title
+        %td= archive.title
+      %tr
+        %th Description
+        %td= archive.description
+      %tr
+        %th Created at
+        %td= archive.created_at
+      %tr
+        %th Updated at
+        %td= archive.updated_at
+      %tr
+        %th File
+        %td= link_to archive.file.name, archive.file.url
