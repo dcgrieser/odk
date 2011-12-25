@@ -1,3 +1,90 @@
-header ul li {
-  display: inline;
+@import "common";
+
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Regular'), local('Cabin-Regular'), url("/assets/fonts/cabin_regular.woff") format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Cabin Bold'), local('Cabin-Bold'), url("/assets/fonts/cabin_bold.woff") format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Cabin Italic'), local('Cabin-Italic'), url("/assets/fonts/cabin_italic.woff") format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Cabin Bold Italic'), local('Cabin-BoldItalic'), url("/assets/fonts/cabin_bold_italic.woff") format('woff');
+}
+
+body {
+  font-family: "Cabin", "serif";
+  font-weight: normal;
+  font-style: normal;
+
+  a {
+    text-decoration: none;
+    color: $text_color;
+  }
+}
+
+#container {
+  width: 970px;
+  margin: auto;
+}
+
+header {
+  width: 665px;
+  margin: auto;
+
+  ul {
+    padding: 0;
+    text-align: center;
+    li {
+      display: inline;
+    }
+  }
+
+  img {
+    position: absolute;
+  }
+
+  h1 {
+    font-size: 60px;
+    margin: 0 7px 0 50px;
+    display: inline;
+  }
+}
+
+nav {
+  background-color: $nav_background;
+  a {
+    color: $nav_text_color;
+    font-weight: bold;
+    &:hover {
+      color: darken($nav_text_color, 20%);
+    }
+  }
+
+  ul {
+    padding: 0;
+    text-align: center;
+    li {
+      display: inline;
+      padding: 0 20px;
+    }
+  }
+}
+
+#content {
+  position: relative;
+  margin: 10px 20px 40px;
 }

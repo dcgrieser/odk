@@ -2,16 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-address.contact {
-  margin-top: -33px;
-  margin-left: 150px;
-}
 
-span.contact {
-  display: inline-block;
-  font-weight: bold;
-}
+#content.contacts {
+  address.contact {
+    margin-top: -35px;
+    margin-left: 150px;
+  }
 
-span.fixedwidth {
-  width: 150px;
+  span.contact {
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  span.fixedwidth {
+    width: 150px;
+  }
 }

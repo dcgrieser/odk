@@ -1,4 +1,3 @@
 %h2 Officers
 - @officers.each do |u|
-  = "#{u.name} #{u.newest_role.title}"
-  %br
+  %p= "#{u.name} #{u.newest_role.title}"

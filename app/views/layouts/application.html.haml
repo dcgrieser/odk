@@ -6,7 +6,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = render "shared/header"
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    #container
+      = render :partial => "shared/header"
+      %p.notice= notice
+      %p.alert= alert
+      %div{:id => "content", :class => controller.controller_name}
+        = yield
+      = render :partial => "shared/footer"
